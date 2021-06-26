@@ -5,4 +5,9 @@ repo_name = "demo-coffeedust-io"
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
-# gem "rails"
+gem "rack"
+
+group :development do
+  gem 'pry'
+  gem 'shotgun'
+end

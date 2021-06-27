@@ -6,7 +6,7 @@ class ProjectDemo
     attr_hash.each do |key, value|
       self.send("#{key}=", value)
     end
-    self.dir = ProjectDemoConfig.default_directory + self.name if !self.dir
+    self.dir = ProjectDemoConfig.default_directory + "/#{self.name}" if !self.dir
   end
 
   def start

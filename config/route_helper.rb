@@ -6,9 +6,8 @@ class RouteHelper
   ]
 
   def initialize(env)
-    req = Rack::Request.new(env)
-    @method = req["REQUEST_METHOD"]
-    @params = req.params
+    @req = Rack::Request.new(env)
+    @project_name = @req.params["PROJECT_NAME"]
   end
 
 end

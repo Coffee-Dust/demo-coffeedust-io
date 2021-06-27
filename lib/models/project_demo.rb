@@ -9,6 +9,13 @@ class ProjectDemo
     self.dir = ProjectDemoConfig.default_directory + self.name if !self.dir
   end
 
+  def start
+    puts "Starting demo on port #{self.port}."
+    self.pid = fork do
+      ENV["BUNDLE_GEMFILE"] = nil
+      Process.spawn "cd #{self.dir} && rails s -e p -p #{self.port}"
+    end
   end
+
   
 end

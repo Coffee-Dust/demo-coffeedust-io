@@ -17,5 +17,9 @@ class ProjectDemo
     end
   end
 
+  def shutdown!
+    system("kill $(lsof -t -i:#{self.port})")
+  end
+
   
 end

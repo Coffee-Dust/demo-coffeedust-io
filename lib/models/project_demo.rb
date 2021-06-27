@@ -1,5 +1,9 @@
 class ProjectDemo
-  def initialize
-    
+  
+  attr_accessor :name, :dir, :port, :pid
+
+  def initialize()
+
   end
+  
 end

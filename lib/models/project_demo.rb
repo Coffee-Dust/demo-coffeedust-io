@@ -21,5 +21,13 @@ class ProjectDemo
     system("kill $(lsof -t -i:#{self.port})")
   end
 
+  def isRunning?
+    @isRunning
+  end
+
+  private
+  def setRunningStatus=(v)
+    @isRunning = v
+  end
   
 end

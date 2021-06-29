@@ -13,7 +13,7 @@ ProjectsConfig.new do |config|
   config.default_directory = "/project_forks"
   
   config.project_instances = [
-    ProjectDemo.new(name: "coffee_talk_rails", port: 6900, config: config),
-    ProjectDemo.new(name: "LCCT", port: 6901, config: config)
+    ProjectDemo.new(name: "coffee_talk_rails", port: 6900),
+    ProjectDemo.new(name: "LCCT", port: 6901)
   ]
 end

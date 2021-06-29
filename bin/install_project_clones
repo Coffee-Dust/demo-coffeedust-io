@@ -1,2 +1,23 @@
 #!/bin/bash
 
+cd ./project_clones 
+
+# Coffee-Beans-Rails:
+if [ ! -d "./coffee_beans_rails" ];
+then
+  git clone -b demo https://github.com/Coffee-Dust/Coffee-Beans.git coffee_beans_rails
+  cd coffee_beans_rails
+  bundler install
+  rails credentials:edit
+  rake db:migrate RAILS_ENV=test
+  yarn
+  echo "Coffee-Beans-Rails demo installed"
+else
+  cd coffee_beans_rails
+  git pull origin demo
+  echo "It was updated instead!"
+fi
+
+#Coffee-Beans-React:
+
+echo "COFFEEDUST.IO BASH SCRIPT COMPLETE! :D"

@@ -9,7 +9,10 @@ class ProjectsConfig
   def self.project_names
     @@project_names
   end
-  
+
+  def self.find_instance_by_name(name)
+    return self.project_instances.detect{|p| p.name == name}
+  end
 
   def initialize
     yield(self)

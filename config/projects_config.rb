@@ -1,5 +1,15 @@
 class ProjectsConfig
 
+  def self.default_directory
+    @@default_directory
+  end
+  def self.project_instances
+    @@project_instances
+  end
+  def self.project_names
+    @@project_names
+  end
+  
 
   def initialize
     yield(self)

@@ -10,7 +10,7 @@ require_relative '../lib/projects_controller.rb'
 require_relative '../lib/application.rb'
 
 ProjectsConfig.new do |config|
-  config.default_directory = "/project_forks"
+  config.default_directory = "/project_clones"
   
   config.project_instances = [
     ProjectDemo.new(name: "coffee_talk_rails", port: 6900),

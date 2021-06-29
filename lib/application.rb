@@ -1,11 +1,16 @@
 class Application
-  
+
   def call(env)
-    resp = Rack::Response.new
+    route = RouteHelper.new(env)
+    response = Rack::Response.new
 
-    resp.write "Hello world!"
-
-    resp.finish
+    if route.is_valid_project?
+      response.write ProjectsController.start(route.project_instance)
+    else
+      response.write "Invalid request!"
+      response.status = 469
+    end
+    response.finish
   end
 
 end

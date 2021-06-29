@@ -3,10 +3,29 @@ class ProjectDemo
   attr_accessor :name, :dir, :port, :pid
 
   def initialize(attr_hash)
+
     attr_hash.each do |key, value|
       self.send("#{key}=", value)
     end
-    self.dir = ProjectDemoConfig.default_directory + "/#{self.name}" if !self.dir
+    self.dir = ProjectsConfig.default_directory + "/#{self.name}" if !self.dir
+
+    @isRunning = false
+
+    @shutdown_thread = Thread.new do
+      puts "INITIALIZING SHUTDOWN LISTENER THREAD FOR: Demo #{@name}"
+      while true do
+        if @isRunning
+          puts "SHUTDOWN_THREAD: Starting shutdown countdown for ProjectDemo:Instance #{@name}"
+          sleep(900)
+          puts "SHUTTING DOWN: Demo #{@name} on port #{@port}."
+          system("kill $(lsof -t -i:#{@port})")
+          @isRunning = false
+        else
+          Thread.pass
+        end
+      end
+    end
+
   end
 
   def start
@@ -15,19 +34,11 @@ class ProjectDemo
       ENV["BUNDLE_GEMFILE"] = nil
       Process.spawn "cd #{self.dir} && rails s -e p -p #{self.port}"
     end
-  end
-
-  def shutdown!
-    system("kill $(lsof -t -i:#{self.port})")
+    @isRunning = true
   end
 
   def isRunning?
     @isRunning
-  end
-
-  private
-  def setRunningStatus=(v)
-    @isRunning = v
   end
   
 end

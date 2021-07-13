@@ -10,10 +10,12 @@ then
   cd $nameOfProject
   bash install_demo.bash
   echo "$nameOfProject demo successfully cloned & installed!"
+  cd ../
 else
   cd $nameOfProject
   git pull origin demo
   echo "It was updated instead!"
+  cd ../
 fi
 
 #Coffee-Beans-React:

@@ -18,6 +18,22 @@ else
   cd ../
 fi
 
+#My Coffee Table
+nameOfProject="my_coffee_table"
+if [ ! -d "./$nameOfProject" ];
+then
+  git clone -b demo https://github.com/Coffee-Dust/My-Coffee-Table.git $nameOfProject
+  cd $nameOfProject
+  bash install_demo.bash
+  echo "$nameOfProject demo successfully cloned & installed!"
+  cd ../
+else
+  cd $nameOfProject
+  git pull origin demo
+  echo "It was updated instead!"
+  cd ../
+fi
+
 #Coffee-Beans-React:
 
 echo "COFFEEDUST.IO BASH SCRIPT COMPLETE! :D"

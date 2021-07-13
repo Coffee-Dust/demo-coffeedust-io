@@ -3,14 +3,15 @@
 cd ./project_clones 
 
 # Coffee-Beans-Rails:
-if [ ! -d "./coffee_beans_rails" ];
+nameOfProject="coffee_beans_rails"
+if [ ! -d "./$nameOfProject" ];
 then
-  git clone -b demo https://github.com/Coffee-Dust/Coffee-Beans.git coffee_beans_rails
-  cd coffee_beans_rails
+  git clone -b demo https://github.com/Coffee-Dust/Coffee-Beans.git $nameOfProject
+  cd $nameOfProject
   bash install_demo.bash
-  echo "Coffee-Beans-Rails demo successfully cloned & installed!"
+  echo "$nameOfProject demo successfully cloned & installed!"
 else
-  cd coffee_beans_rails
+  cd $nameOfProject
   git pull origin demo
   echo "It was updated instead!"
 fi

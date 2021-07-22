@@ -6,6 +6,7 @@ repo_name = "demo-coffeedust-io"
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
 gem "rack"
+gem 'rack-cors', :require => 'rack/cors'
 
 group :development do
   gem 'pry'

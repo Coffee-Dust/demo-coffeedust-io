@@ -7,7 +7,7 @@ class Application
     if route.is_valid_project?
       response.write ProjectsController.start(route.project_instance)
     else
-      response.write "Invalid request!"
+      response.write '{"instanceStartedWithPort": false}'
       response.status = 469
     end
     response.finish

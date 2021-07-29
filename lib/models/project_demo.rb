@@ -32,7 +32,8 @@ class ProjectDemo
     puts "Starting demo on port #{self.port}."
     self.pid = fork do
       ENV["BUNDLE_GEMFILE"] = nil
-      Process.spawn "cd #{self.dir} && rails s -e test -p #{self.port}"
+      # Process.spawn "cd #{self.dir} && rails s -e test -p #{self.port}"
+      Process.spawn "cd #{self.dir} && rails s -e test -p #{self.port} -b 'ssl://0.0.0.0?key=#{ENV["DEMO_SERVER_SSL_KEY"]}&cert=#{ENV["DEMO_SERVER_SSL_CRT"]}' "
     end
     @isRunning = true
   end

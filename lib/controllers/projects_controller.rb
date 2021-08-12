@@ -1,4 +1,4 @@
-class ProjectsController
+class ProjectsController < ApplicationController
 
   def self.start(project_instance)
     project_instance.start if !project_instance.isRunning?

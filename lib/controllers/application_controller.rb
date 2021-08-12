@@ -1,4 +1,4 @@
-class Application
+class ApplicationController < Sinatra::Base
 
   def call(env)
     route = RouteHelper.new(env)

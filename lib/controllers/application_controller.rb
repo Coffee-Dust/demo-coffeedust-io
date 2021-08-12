@@ -1,16 +1,15 @@
 class ApplicationController < Sinatra::Base
 
-  def call(env)
-    route = RouteHelper.new(env)
-    response = Rack::Response.new
+  configure do
+      set :views, "lib/views"
+      set :public_dir, "public"
 
-    if route.is_valid_project?
-      response.write ProjectsController.start(route.project_instance)
-    else
-      response.write '{"instanceStartedWithPort": false}'
-      response.status = 469
-    end
-    response.finish
+      enable :sessions
+      set :session_secret, ENV["SECRET_BOX"] || "*(!@&$*(&!@JHO*ASYLJKDH*(U@!(&DISAHJD*&!@*(&D*(!@JKHJKSACXJNKAJSD*@!&(*&ISmashedMyFaceontheKeyboardForThissupersecretsessionsecret"
+  end
+
+  get '/' do
+    redirect "https://coffeedust.io/projects"
   end
 
 end

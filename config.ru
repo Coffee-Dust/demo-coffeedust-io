@@ -11,4 +11,7 @@ use Rack::Cors do
         # headers to expose
   end
 end
-run Application.new
+
+use Rack::MethodOverride
+run ApplicationController
+use ProjectsController

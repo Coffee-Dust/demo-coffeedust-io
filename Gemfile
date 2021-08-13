@@ -9,6 +9,7 @@ gem "rack"
 gem 'rack-cors', :require => 'rack/cors'
 gem 'thin'
 gem 'sinatra'
+gem 'require_all'
 
 group :development do
   gem 'pry'

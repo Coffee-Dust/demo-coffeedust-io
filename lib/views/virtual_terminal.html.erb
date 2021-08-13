@@ -11,13 +11,20 @@
   <div class="terminal-bg">
     <div class="top-bar-content">
       <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
+      <div class="circle" style="background: #663f24;"></div>
+      <div class="circle" style="background: #7e5a40;"></div>
       <h1>cd.io virtual terminal - <%= @terminal ? @terminal.project_name : "invalid session"%></h1>
     </div>
     <main class="output-content">
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil fugiat, iusto perferendis obcaecati non quibusdam esse quas cum iure sunt aut omnis. Fuga necessitatibus voluptas incidunt magnam at? Eius, velit?
     </main>
+
+    <div class="input-box">
+      <span>$ - </span>
+      <form action="">
+      <input type="text">
+      </form>
+    </div>
   </div>
 </body>
 
@@ -29,18 +36,19 @@
     justify-content: center;
     overflow: hidden;
     box-sizing: border-box;
+    background: #1d0b03;
   }
   .terminal-bg {
     width: 75%;
     height: 75%;
     background: darkgreen;
     margin: auto;
-    /* overflow: scroll; */
     border-radius: 15px;
     position: relative;
+    padding: 0 2%;
 
-    border: 10px solid gray;
-    border-top: 35px solid gray;
+    border: 10px solid #737373;
+    border-top: 35px solid #737373;
   }
 
   .top-bar-content {
@@ -58,7 +66,7 @@
     height: 20px;
     width: 20px;
     border-radius: 100px;
-    background: darkred;
+    background: #4d280f;
   }
 
   .top-bar-content > h1 {
@@ -67,14 +75,53 @@
     font-weight: 400;
     text-align: right;
     flex: 1;
+    wrap: nowrap;
+    color: #2c1105;
   }
 
-  main.content {
+  main.output-content {
     width: 100%;
-    height: 100%;
+    height: calc(100% - 3em);
     overflow: scroll;
     color: lightgreen;
     font-family: "Source Code Pro";
+    font-weight: 300;
+    padding-top: 1em;
+  }
+
+  div.input-box {
+    width: 100%;
+    height: 2em;
+    border-top: 2px solid lightgreen;
+    margin: 0 auto;
+    color: lightgreen;
+    font-family: "Source Code Pro";
+  }
+
+  div.input-box > form {
+    height: 100%;
+    display: inline;
+  }
+
+  div.input-box > form > input {
+    display: inline-block;
+    width: 92%;
+    height: 100%;
+    background: none;
+    border: none;
+    color: lightgreen;
+    font-family: "Source Code Pro";
+    font-size: 1em;
+    
+  }
+
+  div.input-box > form > input:active {
+    border: none;
+    outline: none;
+  }
+  div.input-box > form > input:focus {
+    border: none;
+    outline: none;
   }
 </style>
 

@@ -1,0 +1,3 @@
+class VirtualTerminalController < ApplicationController
+  
+end

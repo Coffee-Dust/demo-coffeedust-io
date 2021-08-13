@@ -48,6 +48,14 @@ module ProjectDemos
       @isRunning
     end
 
+    def self.config
+      yield
+    end
+
+    def self.find_instance_by_name(name)
+      return @@project_instances.detect{|p| p.name == name}
+    end
+
   end
 
 end

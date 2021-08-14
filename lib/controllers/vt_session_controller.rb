@@ -1,0 +1,4 @@
+class VTSessionController < ApplicationController
+
+
+end

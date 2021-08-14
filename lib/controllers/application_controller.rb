@@ -12,4 +12,9 @@ class ApplicationController < Sinatra::Base
     redirect "https://coffeedust.io/projects"
   end
 
+  helpers do
+    def valid_session?
+      !!session[:terminal_id] && @terminal = VirtualTerminal.find_session(session[:terminal_id])
+    end
+  end
 end

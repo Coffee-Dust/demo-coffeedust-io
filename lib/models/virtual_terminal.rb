@@ -9,4 +9,11 @@ class VirtualTerminal
 
     @@sessions.push(self)
   end
+
+  def self.find_session(terminal_id)
+    @@sessions.detect do |vt| 
+      vt.id == terminal_id 
+    end
+  end
+
 end

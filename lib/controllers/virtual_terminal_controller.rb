@@ -1,6 +1,12 @@
 class VirtualTerminalController < ApplicationController
 
   get "/virtual_terminal" do
+    if valid_session?
+      erb :"/virtual_terminal.html"
+    else
+      redirect "https://coffeedust.io/projects"
+    end
+  end
 
   end
 

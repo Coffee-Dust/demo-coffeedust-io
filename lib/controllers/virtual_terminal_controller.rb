@@ -8,6 +8,12 @@ class VirtualTerminalController < ApplicationController
     end
   end
 
+  post "/virtual_terminal" do
+    if !valid_session?
+      @terminal = VirtualTerminal.new(params["project_name"])
+      session[:terminal_id] = @terminal.id
+    end
+    redirect "/virtual_terminal"
   end
 
   helpers do

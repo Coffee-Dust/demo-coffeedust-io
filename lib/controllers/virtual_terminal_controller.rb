@@ -4,8 +4,10 @@ class VirtualTerminalController < ApplicationController
 
   end
 
-  post "/virtual_terminal" do
-    
+  helpers do
+    def valid_session?
+      !!session[:terminal_id] && @terminal = VirtualTerminal.find_session(session[:terminal_id])
+    end
   end
 
 end

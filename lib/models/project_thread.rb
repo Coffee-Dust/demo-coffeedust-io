@@ -1,0 +1,3 @@
+class ProjectThread < Thread
+  
+end

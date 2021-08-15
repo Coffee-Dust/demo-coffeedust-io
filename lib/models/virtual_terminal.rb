@@ -1,7 +1,7 @@
 class VirtualTerminal
   @@sessions = []
 
-  attr_accessor :id, :project_name, :project_thread
+  attr_accessor :id, :project_name, :project
 
   def initialize(project_name)
     @id = SecureRandom.uuid

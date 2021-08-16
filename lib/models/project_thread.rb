@@ -26,6 +26,15 @@ class ProjectThread < Thread
     self.thread_variable_set("input", input)
   end
 
+  def log_variable_status
+    puts "ProjectThread> Logging current thread variable status"
+    puts "ProjectThread> input_processed?: #{self.input_processed?}"
+    puts "ProjectThread> sent_input?: #{self.sent_input?}"
+    puts "ProjectThread> actual_input: #{self.input}"
+    puts "ProjectThread> latest_output: #{self.thread_variable_get("latest_output")}"
+    puts "ProjectThread> output_history: #{self.thread_variable_get("output_history")}"
+  end
+
 #--- Properties & Initializer below --- //
 
   def initialize(terminal)

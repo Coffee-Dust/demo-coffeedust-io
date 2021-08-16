@@ -7,6 +7,8 @@ class VirtualTerminal
     @id = SecureRandom.uuid
     @project_name = project_name
 
+    @project = ProjectThread.new(self)
+
     @@sessions.push(self)
   end
 

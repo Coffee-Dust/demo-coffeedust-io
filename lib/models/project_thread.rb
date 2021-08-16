@@ -1,5 +1,12 @@
 class ProjectThread < Thread
-  
+
+  def on_project_puts(text)
+
+  end
+
+  def on_project_gets
+    return self.input
+  end
 
   def start_project
     ProjectDemos::CLI.start(self.terminal.project_name, self)

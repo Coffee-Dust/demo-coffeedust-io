@@ -5,6 +5,11 @@ class ProjectThread < Thread
   end
 
   def on_project_gets
+    self.set_input_processed(true) if self.sent_input?
+    while self.input == nil
+      Thread.pass
+    end
+    self.set_sent_input(true)
     return self.input
   end
 

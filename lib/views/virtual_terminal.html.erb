@@ -49,7 +49,8 @@
 
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Source+Code+Pro:ital,wght@0,300;0,400;1,300&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Source+Code+Pro:ital,wght@0,300;0,400;1,300&display=swap');
+
   body {
     height: 100vh;
     display: flex;
@@ -58,6 +59,7 @@
     box-sizing: border-box;
     background: #1d0b03;
   }
+
   .terminal-bg {
     width: 75%;
     height: 75%;
@@ -82,14 +84,15 @@
     align-items: center;
     gap: 10px;
   }
-  .top-bar-content > .circle {
+
+  .top-bar-content>.circle {
     height: 20px;
     width: 20px;
     border-radius: 100px;
     background: #4d280f;
   }
 
-  .top-bar-content > h1 {
+  .top-bar-content>h1 {
     font-size: 1.3em;
     font-family: "Source Code Pro";
     font-weight: 400;
@@ -107,6 +110,13 @@
     font-family: "Source Code Pro";
     font-weight: 300;
     padding-top: 1em;
+    white-space: pre-wrap;
+  }
+
+  main.output-content > ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
   }
 
   div.input-box {
@@ -118,12 +128,12 @@
     font-family: "Source Code Pro";
   }
 
-  div.input-box > form {
+  div.input-box>form {
     height: 100%;
     display: inline;
   }
 
-  div.input-box > form > input {
+  div.input-box>form>input {
     display: inline-block;
     width: 92%;
     height: 100%;
@@ -132,14 +142,15 @@
     color: lightgreen;
     font-family: "Source Code Pro";
     font-size: 1em;
-    
+
   }
 
-  div.input-box > form > input:active {
+  div.input-box>form>input:active {
     border: none;
     outline: none;
   }
-  div.input-box > form > input:focus {
+
+  div.input-box>form>input:focus {
     border: none;
     outline: none;
   }

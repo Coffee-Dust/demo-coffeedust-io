@@ -1,6 +1,9 @@
 class ProjectThread < Thread
   
 
+  def start_project
+    ProjectDemos::CLI.start(self.terminal.project_name, self)
+  end
 
   def initialize(terminal)
     super do

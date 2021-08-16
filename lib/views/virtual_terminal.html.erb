@@ -38,6 +38,7 @@
     const config = {method: "POST", headers: {"Content-Type": "application/json;charset=UTF-8", "Accept": "application/json;charset=UTF-8"}, body: JSON.stringify({input: event.currentTarget.inputField.value}) }
     fetch("/virtual_terminal/input", config).then(r=> r.json())
     .then(response=> {
+      form.inputField.value = "";
       response.output_lines.map(line=> {
         const li = document.createElement("li")
         li.textContent = line

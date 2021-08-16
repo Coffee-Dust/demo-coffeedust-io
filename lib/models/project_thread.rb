@@ -41,6 +41,14 @@ class ProjectThread < Thread
     self.thread_variable_set("input_processed", val)
   end
 
+  def sent_input?
+    self.thread_variable_get("sent_input")
+  end
+
+  def set_sent_input(val)
+    self.thread_variable_set("sent_input", val)
+  end
+
   def latest_output
     self.thread_variable_get("latest_output")
   end

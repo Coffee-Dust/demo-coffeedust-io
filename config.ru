@@ -13,6 +13,7 @@ use Rack::Cors do
 end
 
 use Rack::MethodOverride
+use Rack::JSONBodyParser
 run ApplicationController
 use ProjectsController
 use VirtualTerminalController

@@ -16,3 +16,4 @@ use Rack::MethodOverride
 run ApplicationController
 use ProjectsController
 use VirtualTerminalController
+use VTSessionController

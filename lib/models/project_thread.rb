@@ -5,6 +5,16 @@ class ProjectThread < Thread
     ProjectDemos::CLI.start(self.terminal.project_name, self)
   end
 
+  def send_input(input)
+    self.set_sent_input(false)
+    self.add_output_chunk(self.thread_variable_get("latest_output"))
+    self.thread_variable_set("latest_output", [])
+
+    self.thread_variable_set("input", input)
+  end
+
+#--- Properties & Initializer below --- //
+
   def initialize(terminal)
     super do
       self.thread_variable_set("input", nil)

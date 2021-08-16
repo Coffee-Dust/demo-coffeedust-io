@@ -43,6 +43,9 @@
         const li = document.createElement("li")
         li.textContent = line
         document.getElementById("output-list").appendChild(li)
+
+        const outputDiv = document.querySelector(".output-content")
+        outputDiv.scrollTop = outputDiv.scrollHeight;
       })
     })
   })

@@ -10,6 +10,7 @@ module ProjectDemos
       @name = name
       @thread = thread
 
+      self.send("run_#{name}")
     end
 
     def self.config

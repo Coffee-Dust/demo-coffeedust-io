@@ -1,7 +1,8 @@
 class ProjectThread < Thread
 
   def on_project_puts(text)
-
+    self.add_to_latest_output_chunk(text)
+    self.thread_variable_set("input", nil)
   end
 
   def on_project_gets

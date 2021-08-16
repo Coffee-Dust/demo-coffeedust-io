@@ -30,6 +30,24 @@
   </div>
 </body>
 
+
+<script>
+  const form = document.querySelector("#inputForm")
+  form.addEventListener("submit", event=> {
+    event.preventDefault()
+    const config = {method: "POST", headers: {"Content-Type": "application/json;charset=UTF-8", "Accept": "application/json;charset=UTF-8"}, body: JSON.stringify({input: event.currentTarget.inputField.value}) }
+    fetch("/virtual_terminal/input", config).then(r=> r.json())
+    .then(response=> {
+      response.output_lines.map(line=> {
+        const li = document.createElement("li")
+        li.textContent = line
+        document.getElementById("output-list").appendChild(li)
+      })
+    })
+  })
+</script>
+
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Source+Code+Pro:ital,wght@0,300;0,400;1,300&display=swap');
   body {

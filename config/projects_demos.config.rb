@@ -8,3 +8,7 @@ ProjectDemos::Server.config do
     ProjectDemos::Server.new(name: "local_coffeeshop", port: 6903, start_command: "puma -b 'ssl://0.0.0.0?key=#{ENV["DEMO_SERVER_SSL_KEY"]}&cert=#{ENV["DEMO_SERVER_SSL_CRT"]}'")
   ]
 end
+
+ProjectDemos::CLI.config do
+  @@clone_directory = "#{ENV["PWD"]}/project_clones"
+end

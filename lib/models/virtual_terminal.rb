@@ -12,6 +12,10 @@ class VirtualTerminal
     @@sessions.push(self)
   end
 
+  def send_input(input)
+    @project.send_input(input)
+  end
+
   def self.find_session(terminal_id)
     @@sessions.detect do |vt| 
       vt.id == terminal_id 

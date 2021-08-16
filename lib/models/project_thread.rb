@@ -1,6 +1,17 @@
 class ProjectThread < Thread
   
 
+
+  def initialize(terminal)
+    super do
+      self.thread_variable_set("input", nil)
+      self.thread_variable_set("output_history", [])
+      self.thread_variable_set("latest_output", [])
+      self.thread_variable_set("terminal", terminal)
+      self.start_project
+    end
+  end
+
   def set_terminal(val)
     self.thread_variable_set("terminal", val)
   end

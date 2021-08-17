@@ -75,6 +75,10 @@ class ProjectThread < Thread
     self.thread_variable_get("latest_output")
   end
 
+  def output_history
+    self.thread_variable_get("output_history")
+  end
+
   def add_to_latest_output_chunk(val)
     self.thread_variable_set("latest_output", self.thread_variable_get("latest_output").push(val))
   end

@@ -15,6 +15,20 @@ module ProjectDemos
         Thread.current.on_project_gets
       end
 
+      on_exit_block = Proc.new {
+        im.save_data_on_exit
+        c = nil
+        im = nil
+        Department.destory_all
+        Category.destory_all
+        Sub_Category.destory_all
+        Item.destory_all
+
+        GC.start
+      }
+
+      @thread.run_block_on_exit(on_exit_block)
+
       c.start_program_loop
     end
 

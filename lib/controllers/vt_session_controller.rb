@@ -14,4 +14,11 @@ class VTSessionController < ApplicationController
     end
   end
 
+  get "/virtual_terminal/output" do
+    if valid_session?
+      content_type :json
+      {output_lines: @terminal.project.latest_output}.to_json
+    end
+  end
+
 end

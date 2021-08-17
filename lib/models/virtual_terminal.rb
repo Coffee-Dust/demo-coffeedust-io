@@ -13,7 +13,11 @@ class VirtualTerminal
   end
 
   def send_input(input)
-    @project.send_input(input)
+    if input.include?("exit")
+      self.close_terminal!
+    else
+      @project.send_input(input)
+    end
   end
 
   def input_processed?

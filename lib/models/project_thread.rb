@@ -52,6 +52,10 @@ class ProjectThread < Thread
     Thread.kill(self)
   end
 
+  def run_block_on_exit(block)
+    self.thread_variable_set("on_exit_block", block)
+  end
+
   def set_terminal(val)
     self.thread_variable_set("terminal", val)
   end

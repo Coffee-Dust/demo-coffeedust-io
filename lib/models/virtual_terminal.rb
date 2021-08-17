@@ -20,6 +20,12 @@ class VirtualTerminal
     @project.input_processed?
   end
 
+  def close_terminal!
+    @project.shutdown!
+    @project.thread_variable_set("latest_output", ["\n\nExiting terminal.","\nDone! You may now close the window.", "Thank you for using the coffeedust.io Virtual Terminal!"])
+    self.class.remove_session(self.id)
+  end
+
   def self.find_session(terminal_id)
     @@sessions.detect do |vt| 
       vt.id == terminal_id 

@@ -47,6 +47,11 @@ class ProjectThread < Thread
     end
   end
 
+  def shutdown!
+    self.thread_variable_get("on_exit_block").call
+    Thread.kill(self)
+  end
+
   def set_terminal(val)
     self.thread_variable_set("terminal", val)
   end

@@ -32,6 +32,21 @@
 
 
 <script>
+  window.setTimeout(() => {
+    fetch("/virtual_terminal/output").then(r=>r.json())
+    .then(response=> {
+      console.log("response is ", response);
+      response.output_lines.map(line=> {
+        const li = document.createElement("li")
+        li.textContent = line
+        document.getElementById("output-list").appendChild(li)
+
+        const outputDiv = document.querySelector(".output-content")
+        outputDiv.scrollTop = outputDiv.scrollHeight;
+      })
+    })
+  }, 2000);
+
   const form = document.querySelector("#inputForm")
   form.addEventListener("submit", event=> {
     event.preventDefault()

@@ -26,4 +26,10 @@ class VirtualTerminal
     end
   end
 
+  def self.remove_session(terminal_id)
+    @@sessions.delete_if do |vt|
+      vt.id == terminal_id
+    end
+  end
+
 end

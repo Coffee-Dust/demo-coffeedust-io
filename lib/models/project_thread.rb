@@ -45,7 +45,7 @@ class ProjectThread < Thread
       self.thread_variable_set("latest_output", [])
       self.thread_variable_set("terminal", terminal)
       self.thread_variable_set("input_processed", false)
-      self.start_project
+      self.thread_variable_set("project_exe", self.start_project)
     end
   end
 

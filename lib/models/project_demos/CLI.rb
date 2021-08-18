@@ -25,10 +25,6 @@ module ProjectDemos
         im.save_data_on_exit
         c = nil
         im = nil
-        Department.destory_all
-        Category.destory_all
-        Sub_Category.destory_all
-        Item.destory_all
 
         GC.start
       }

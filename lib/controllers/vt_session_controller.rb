@@ -5,7 +5,7 @@ class VTSessionController < ApplicationController
       @terminal.send_input(params[:input])
 
       cycles_elapsed = 0
-      unless @terminal.input_processed? || cycles_elapsed > 1000
+      while !@terminal.input_processed? || cycles_elapsed < 1000
         cycles_elapsed += 1
       end
       content_type :json

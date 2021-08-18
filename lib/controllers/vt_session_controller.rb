@@ -5,9 +5,10 @@ class VTSessionController < ApplicationController
       @terminal.send_input(params[:input])
 
       cycles_elapsed = 0
-      while !@terminal.input_processed? || cycles_elapsed < 1000
+      while !@terminal.input_processed? && cycles_elapsed < 1000
         cycles_elapsed += 1
       end
+
       content_type :json
       {output_lines: @terminal.project.latest_output}.to_json
 
@@ -19,6 +20,10 @@ class VTSessionController < ApplicationController
       content_type :json
       {output_lines: @terminal.project.latest_output}.to_json
     end
+  end
+
+  get "/console" do
+    binding.pry
   end
 
 end

@@ -34,7 +34,7 @@ module ProjectDemos
 
 
     def self.start(name, thread)
-      self.new(name, thread)
+      return self.new(name, thread)
     end
 
     def initialize(name, thread)

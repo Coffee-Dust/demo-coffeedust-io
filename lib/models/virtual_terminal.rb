@@ -25,8 +25,8 @@ class VirtualTerminal
   end
 
   def close_terminal!
-    @project.shutdown!
     @project.thread_variable_set("latest_output", ["\n\nExiting terminal.","\nDone! You may now close the window.", "Thank you for using the coffeedust.io Virtual Terminal!"])
+    @project.shutdown!
     self.class.remove_session(self.id)
   end
 

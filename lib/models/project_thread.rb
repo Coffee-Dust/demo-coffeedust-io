@@ -58,6 +58,14 @@ class ProjectThread < Thread
     self.thread_variable_set("on_exit_block", block)
   end
 
+  def project_storage
+    self.thread_variable_get("project_storage")
+  end
+
+  def initialize_project_storage(val)
+    self.thread_variable_set("project_storage", val)
+  end
+
   def set_terminal(val)
     self.thread_variable_set("terminal", val)
   end

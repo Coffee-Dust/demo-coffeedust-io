@@ -20,6 +20,7 @@ class ProjectThread < Thread
 
   def send_input(input)
     self.set_sent_input(false)
+    self.set_input_processed(false)
     self.add_output_chunk(self.thread_variable_get("latest_output"))
     self.thread_variable_set("latest_output", [])
 

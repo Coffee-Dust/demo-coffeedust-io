@@ -26,7 +26,6 @@ module ProjectDemos
         c = nil
         im = nil
 
-        GC.start
       }
 
       @thread.run_block_on_exit(on_exit_block)

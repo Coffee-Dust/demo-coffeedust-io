@@ -5,6 +5,11 @@ module ProjectDemos
     def run_inventory_manager
       @storage = {"Department" => [], "Category" => [], "Sub_Category" => [], "Item" => []}
       require_relative "#{@@clone_directory}/inventory_manager/config/environment"
+      
+      [Department, Category, Sub_Category, Item].each do |klass|
+        klass.class_variable_set("@@all", @storage[klass.name])
+      end
+
       im = Inventory_Manager.new
       c = Interface_Controller.new(im)
 

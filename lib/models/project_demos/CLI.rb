@@ -3,6 +3,7 @@ module ProjectDemos
   class CLI
 
     def run_inventory_manager
+      @storage = {"Department" => [], "Category" => [], "Sub_Category" => [], "Item" => []}
       require_relative "#{@@clone_directory}/inventory_manager/config/environment"
       im = Inventory_Manager.new
       c = Interface_Controller.new(im)

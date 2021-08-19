@@ -5,10 +5,12 @@ class ProjectsController < ApplicationController
     
     if project_instance
       project_instance.start if !project_instance.isRunning?
-      erb "{'instancePort': #{project_instance.port}, 'instanceStartedWithPort': true}"
+      content_type :json
+      {instancePort: project_instance.port, instanceStartedWithPort: true}.to_json
     else
       status 469
-      erb "{'instanceStartedWithPort': false}"
+      content_type :json
+      {instanceStartedWithPort: false}.to_json
     end
   end
 

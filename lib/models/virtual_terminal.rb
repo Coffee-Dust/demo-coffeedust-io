@@ -9,6 +9,7 @@ class VirtualTerminal
     @project_name = project_name
 
     @project = ProjectThread.new(self)
+    @last_input_timestamp = Time.now
 
     @@sessions.push(self)
   end

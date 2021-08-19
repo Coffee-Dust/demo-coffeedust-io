@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
 
   get '/projects/start' do
-    project_instance = ProjectDemos::Server.find_instance_by_name(params["PROJECT_NAME"])
+    project_instance = ProjectDemos::Server.find_instance_by_name(params["project_name"])
     
     if project_instance
       project_instance.start if !project_instance.isRunning?

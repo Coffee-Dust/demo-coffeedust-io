@@ -15,6 +15,7 @@ class VirtualTerminal
   end
 
   def send_input(input)
+    @last_input_timestamp = Time.now
     if input.include?("exit")
       self.close_terminal!
     else

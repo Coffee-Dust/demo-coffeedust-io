@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virtual Terminal - coffeedust.io</title>
+</head>
+
+<body>
+  <div class="terminal-bg">
+    <div class="top-bar-content">
+      <div class="circle"></div>
+      <div class="circle" style="background: #663f24;"></div>
+      <div class="circle" style="background: #7e5a40;"></div>
+      <h1>cd.io virtual terminal - <%= @terminal ? @terminal.project_name : "invalid session"%></h1>
+    </div>
+    <main class="output-content">
+      <ul id="output-list">
+        <li>Loading project...</li>
+      </ul>
+    </main>
+
+    <div class="input-box">
+      <span>$ - </span>
+      <form action="/" id="inputForm">
+        <input type="text" name="inputField">
+      </form>
+    </div>
+  </div>
+</body>
+
+
+<script>
+  window.setTimeout(() => {
+    fetch("/virtual_terminal/output").then(r=>r.json())
+    .then(response=> {
+      console.log("response is ", response);
+      response.output_lines.map(line=> {
+        const li = document.createElement("li")
+        li.textContent = line
+        document.getElementById("output-list").appendChild(li)
+
+        const outputDiv = document.querySelector(".output-content")
+        outputDiv.scrollTop = outputDiv.scrollHeight;
+      })
+    })
+  }, 1000);
+
+  const form = document.querySelector("#inputForm")
+  form.addEventListener("submit", event=> {
+    event.preventDefault()
+    const config = {method: "POST", headers: {"Content-Type": "application/json;charset=UTF-8", "Accept": "application/json;charset=UTF-8"}, body: JSON.stringify({input: event.currentTarget.inputField.value}) }
+    fetch("/virtual_terminal/input", config).then(r=> r.json())
+    .then(response=> {
+      form.inputField.value = "";
+      response.output_lines.map(line=> {
+        const li = document.createElement("li")
+        li.textContent = line
+        document.getElementById("output-list").appendChild(li)
+
+        const outputDiv = document.querySelector(".output-content")
+        outputDiv.scrollTop = outputDiv.scrollHeight;
+      })
+    })
+  })
+</script>
+
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Source+Code+Pro:ital,wght@0,300;0,400;1,300&display=swap');
+
+  body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    box-sizing: border-box;
+    background: #1d0b03;
+  }
+
+  .terminal-bg {
+    width: 75%;
+    height: 75%;
+    background: darkgreen;
+    margin: auto;
+    border-radius: 15px;
+    position: relative;
+    padding: 0 2%;
+
+    border: 10px solid #737373;
+    border-top: 35px solid #737373;
+  }
+
+  .top-bar-content {
+    position: absolute;
+    top: -35px;
+    left: 0px;
+    height: 35px;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .top-bar-content>.circle {
+    height: 20px;
+    width: 20px;
+    border-radius: 100px;
+    background: #4d280f;
+  }
+
+  .top-bar-content>h1 {
+    font-size: 1.3em;
+    font-family: "Source Code Pro";
+    font-weight: 400;
+    text-align: right;
+    flex: 1;
+    wrap: nowrap;
+    color: #2c1105;
+  }
+
+  main.output-content {
+    width: 100%;
+    height: calc(100% - 3em);
+    overflow: scroll;
+    color: lightgreen;
+    font-family: "Source Code Pro";
+    font-weight: 300;
+    padding-top: 1em;
+    white-space: pre-wrap;
+    overflow-x: hidden;
+  }
+
+  main.output-content > ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+  }
+
+  div.input-box {
+    width: 100%;
+    height: 2em;
+    border-top: 2px solid lightgreen;
+    margin: 0 auto;
+    color: lightgreen;
+    font-family: "Source Code Pro";
+  }
+
+  div.input-box>form {
+    height: 100%;
+    display: inline;
+  }
+
+  div.input-box>form>input {
+    display: inline-block;
+    width: 92%;
+    height: 100%;
+    background: none;
+    border: none;
+    color: lightgreen;
+    font-family: "Source Code Pro";
+    font-size: 1em;
+
+  }
+
+  div.input-box>form>input:active {
+    border: none;
+    outline: none;
+  }
+
+  div.input-box>form>input:focus {
+    border: none;
+    outline: none;
+  }
+</style>
+
+</html>

@@ -1,3 +1,10 @@
+GIT
+  remote: git@github.com:rack/rack-contrib
+  revision: 095edc9df5c98f2e731898edd8bb2f48894a4445
+  specs:
+    rack-contrib (0.0.0.1.ENOGVB)
+      rack (~> 2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -36,6 +43,7 @@ PLATFORMS
 DEPENDENCIES
   pry
   rack
+  rack-contrib!
   rack-cors
   require_all
   shotgun

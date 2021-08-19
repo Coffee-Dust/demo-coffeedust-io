@@ -28,8 +28,4 @@ class VTSessionController < ApplicationController
     end
   end
 
-  get "/console" do
-    binding.pry
-  end
-
 end

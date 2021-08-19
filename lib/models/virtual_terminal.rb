@@ -43,4 +43,15 @@ class VirtualTerminal
     end
   end
 
+  def self.set_config(&block)
+    if block_given?
+      yield(self.config)
+    end
+    self.config
+  end
+
+  def self.config
+    @@config
+  end
+
 end

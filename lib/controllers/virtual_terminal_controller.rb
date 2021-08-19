@@ -8,7 +8,7 @@ class VirtualTerminalController < ApplicationController
     end
   end
 
-  post "/virtual_terminal" do
+  get "/virtual_terminal/new" do
     if !valid_session?
       @terminal = VirtualTerminal.new(params["project_name"])
       session[:terminal_id] = @terminal.id

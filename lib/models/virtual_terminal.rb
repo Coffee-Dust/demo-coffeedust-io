@@ -2,7 +2,7 @@ class VirtualTerminal
   @@sessions = []
   @@config = {}
 
-  attr_reader :id, :project_name, :project
+  attr_reader :id, :project_name, :project, :last_input_timestamp
 
   def initialize(project_name)
     @id = SecureRandom.uuid

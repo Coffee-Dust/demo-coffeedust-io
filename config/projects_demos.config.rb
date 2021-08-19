@@ -9,6 +9,12 @@ ProjectDemos::Server.config do
   ]
 end
 
+VirtualTerminal.set_config do |config|
+  config[:mins_inactive] = 0.5
+  config[:shutdown_interval] = 0.25
+end
+VirtualTerminal.start_shutdown_inactive_terminal_listener
+
 ProjectDemos::CLI.config do
   @@clone_directory = "#{ENV["PWD"]}/project_clones"
 end

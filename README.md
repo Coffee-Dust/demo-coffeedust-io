@@ -5,4 +5,4 @@
      alt="bruh"
      style="float: right; margin-right: 10px;" />
 ## Now with 100% more virtual terminal!
-### Now with 30% more shell!
+### and now with 11.3% more Shell!

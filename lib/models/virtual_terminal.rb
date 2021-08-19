@@ -45,6 +45,21 @@ class VirtualTerminal
     end
   end
 
+  def self.start_shutdown_inactive_terminal_listener
+    puts "VirtualTerminal> Starting shutdown_inactive_terminal_listener thread! oof mouthful"
+    Thread.new do
+      while true do
+        @@sessions.each do |vt|
+          if (vt.last_input_timestamp <= Time.now - (self.config[:mins_inactive] * 60))
+            puts "VirtualTerminal> Inactive terminal found! Shutting down."
+            vt.close_terminal!
+          end
+        end
+        sleep(self.config[:shutdown_interval] * 60)
+      end
+    end
+  end
+
   def self.set_config(&block)
     if block_given?
       yield(self.config)

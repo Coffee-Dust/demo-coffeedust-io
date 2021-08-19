@@ -5,7 +5,7 @@ class ApplicationController < Sinatra::Base
       set :public_dir, "public"
 
       enable :sessions
-      set :session_secret, ENV["SECRET_BOX"] || "*(!@&$*(&!@JHO*ASYLJKDH*(U@!(&DISAHJD*&!@*(&D*(!@JKHJKSACXJNKAJSD*@!&(*&ISmashedMyFaceontheKeyboardForThissupersecretsessionsecret"
+      set :session_secret, ENV["SECRET_BOX"] || raise("You forgot to set the seeecret box secret... @ENV[SECRET_BOX]")
   end
 
   get '/' do

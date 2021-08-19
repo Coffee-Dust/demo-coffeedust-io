@@ -15,11 +15,15 @@ class VirtualTerminal
   end
 
   def send_input(input)
+    puts "VirtualTerminal> Received the input of <#{input}>, with a class of #{input.class.name}"
+    @project.log_variable_status
     @last_input_timestamp = Time.now
     if input.include?("exit")
       self.close_terminal!
     else
       @project.send_input(input)
+      puts "VirtualTerminal> Just sent the input to the thread!"
+      @project.log_variable_status
     end
   end
 

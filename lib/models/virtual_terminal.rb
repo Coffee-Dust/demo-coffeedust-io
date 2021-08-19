@@ -1,5 +1,6 @@
 class VirtualTerminal
   @@sessions = []
+  @@config = {}
 
   attr_reader :id, :project_name, :project
 
